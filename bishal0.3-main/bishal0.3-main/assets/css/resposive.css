@@ -1,0 +1,108 @@
+/* .container {
+    background-color: aqua;
+} */
+
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
+
+
+    .backend {
+        width: 17rem !important;
+        height: 17rem !important;
+    }
+
+    .frontend {
+        width: 12rem !important;
+        height: 12rem !important;
+    }
+
+    .design {
+        width: 5rem !important;
+        height: 5rem !important;
+    }
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .b-img,
+    .f-img,
+    .d-img {
+        width: 35px !important;
+    }
+
+    .backend {
+        width: 22rem;
+        height: 22rem;
+        /* animation: none; */
+    }
+
+    .frontend {
+        width: 15rem;
+        height: 15rem;
+        /* animation: none; */
+    }
+
+    .design {
+        width: 8rem;
+        height: 8rem;
+        /* animation: none; */
+    }
+
+
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+
+    .b-img,
+    .f-img,
+    .d-img {
+        width: 50px;
+    }
+
+    .backend {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .frontend {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .design {
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+/* // X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {}
