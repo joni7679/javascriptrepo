@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             text-align: center;
             font-family: Arial, sans-serif;
@@ -59,6 +64,11 @@
 
         }
 
+        .flex {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
 
         .choose {
             margin: 20px;
@@ -140,16 +150,26 @@
         </div>
         <div class="res-box">
             <!-- User Choice -->
-            <p>User Choice:</p>
-            <div class="box">
-                <img id="user-choice-img" src="https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid" alt="User Choice">
+            <div class="flex">
+                <p>User Choice</p>
+                <div class="box">
+                    <img id="user-choice-img"
+                        src="https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid"
+                        alt="User Choice">
+                </div>
+
             </div>
 
             <!-- Computer Choice -->
-            <p>Computer Choice:</p>
-            <div id="computer-choice-img">
-                <img id="computer-img" src="https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid" alt="Computer Choice">
+            <div class="flex">
+                <p>Computer Choice:</p>
+                <div id="computer-choice-img">
+                    <img id="computer-img"
+                        src="https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid"
+                        alt="Computer Choice">
+                </div>
             </div>
+
         </div>
         <div class="game-info">
 
@@ -177,7 +197,7 @@
         </div>
     </div>
 
-    <button id="msg">Pay Now</button>
+    <button id="msg">Play Now</button>
     <button class="rest-btn">Reset Game</button>
 
 

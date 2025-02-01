@@ -12,6 +12,8 @@ let msg = document.querySelector("#msg");
 let heading = document.querySelector(".heading")
 let timeLeft = 60;
 let Stopwatch;
+// let disable = true;
+
 
 
 const Timerwatch = () => {
@@ -26,7 +28,6 @@ const Timerwatch = () => {
     }, 1000);
 };
 
-Timerwatch()
 
 
 const drawGame = () => {
@@ -59,6 +60,9 @@ function getComputerChoice() {
 function playGame(userChoiceId) {
     // Timerwatch()
     let computerChoice = getComputerChoice();
+
+
+
     computerChoiceImg.src = `./${computerChoice}.png`;
     userChoiceImg.src = `./${userChoiceId}.png`;
 
@@ -78,10 +82,26 @@ function playGame(userChoiceId) {
     }
 }
 
+msg.addEventListener("click", () => {
+    Timerwatch()
+    msg.textContent = "You Game Is Start";
+
+
+})
+
 Choices.forEach((choice) => {
     choice.addEventListener("click", function () {
         let userChoiceId = choice.getAttribute("id");
+        let start = choice.disabled = true;
+        console.log(start);
+        // if (start) {
+        //     alert("Please start the game first!");
+        //     choice.style.cursor = "not-allowed"
+        //     return; // Prevent further execution
+        // }
+
         playGame(userChoiceId);
+
     });
 });
 
@@ -108,3 +128,23 @@ resestBtn.addEventListener("click", () => {
     userChoiceImg.src = `https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid`;
     Timerwatch();
 });
+
+
+msg.addEventListener("click", () => {
+    UserScorePoint = 0;
+    ComputerScorePoint = 0;
+    usersScoreEl.textContent = UserScorePoint;
+    computersScoreEl.textContent = ComputerScorePoint;
+    timeLeft = 60;
+    time.textContent = `timer : ${timeLeft} sec`;
+    gameInfo.style.display = "flex";
+    resestBtn.style.display = "none";
+    gameInfo.style.flexDirection = "column";
+    computerChoiceImg.src = `https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid`;
+    userChoiceImg.src = `https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid`;
+    // choices.forEach((choice) => {
+    //     choice.style.cursor = "pointer";
+    //     choice.disabled = false;
+    // });
+    Timerwatch();
+})
