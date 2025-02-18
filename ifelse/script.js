@@ -77,7 +77,7 @@ else if (Num2 > num1 && Num2 > num3) {
     console.log("Num2 is greater than num1 and num3");
 }
 else {
-    console.log("num3 is greater than num1 and num2");
+    console.log("num3 is less than num1 and num2");
 }
 
 // 5. Given an integer input year, the objective of the code is to Check if a Year is a Leap Year or Not. To do so we’ll check if the year input satisfies either of the two conditions of leap year.
@@ -173,12 +173,10 @@ else if (age >= 20 && age <= 59) {
 let marks = 85;
 if (marks >= 90) {
     console.log("A");
-
 }
 
 else if (marks >= 75) {
     console.log("B");
-
 }
 else if (marks >= 50) {
     console.log("C");
@@ -225,8 +223,9 @@ else {
 
 
 // 14. Check if two numbers are equal.
-//     // Input: 5, 5
-//     // Output: "Equal"
+//  // Input: 5, 5....
+//  // Output: "Equal"
+
 
 let Num = 5;
 let Num1 = 5;
@@ -236,3 +235,5 @@ if (Num === Num1) {
 else {
     console.log("Not Equal");
 }
+
+

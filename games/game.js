@@ -1,20 +1,22 @@
+
+let username = prompt("Enter your Name");
+console.log(username,"username");
+
+// let user = document.querySelector(".user")
 let UserScorePoint = 0;
 let ComputerScorePoint = 0;
 let usersScoreEl = document.querySelector(".users-score");
 let computersScoreEl = document.querySelector(".com-score");
 let computerChoiceImg = document.querySelector("#computer-img");
 let userChoiceImg = document.querySelector("#user-choice-img");
-let resestBtn = document.querySelector(".rest-btn");
-let gameInfo = document.querySelector(".game-box");
+let resestBtn = document.querySelector("#rest-btn");
+let gameInfo = document.querySelector(".game-info");
+let playAgin = document.querySelector(".play-again")
 let time = document.querySelector("#time");
-const Choices = document.querySelectorAll(".choices");
+const Choices = document.querySelectorAll(".choice");
 let msg = document.querySelector("#msg");
-let heading = document.querySelector(".heading")
 let timeLeft = 60;
 let Stopwatch;
-// let disable = true;
-
-
 
 const Timerwatch = () => {
     Stopwatch = setInterval(() => {
@@ -32,23 +34,23 @@ const Timerwatch = () => {
 
 const drawGame = () => {
     msg.textContent = "Game was a draw";
-    msg.style.backgroundColor = "gray";
+    msg.style.color = "gray";
 };
 
 let showWinner = (userWinner, userChoice, computerChoice) => {
     if (userWinner) {
         usersScoreEl.innerHTML = ++UserScorePoint;
         msg.textContent = `You Win! ${userChoice} beats ${computerChoice}`;
-        msg.style.backgroundColor = "blue";
+        msg.style.color = "#85ff20";
     } else {
         computersScoreEl.innerHTML = ++ComputerScorePoint;
         msg.textContent = `You Lose! ${computerChoice} beats ${userChoice}`;
-        msg.style.backgroundColor = "red";
+        msg.style.color = "red";
     }
 
-    if (UserScorePoint === 10 || ComputerScorePoint === 10) {
-        EndGame();
-    }
+    // if (UserScorePoint === 10 || ComputerScorePoint === 10) {
+    //     EndGame();
+    // }
 };
 
 function getComputerChoice() {
@@ -57,50 +59,52 @@ function getComputerChoice() {
     return choices[randomIndx];
 }
 
-function playGame(userChoiceId) {
-    // Timerwatch()
+
+function playGame(userChoice) {
+
     let computerChoice = getComputerChoice();
-
-
-
     computerChoiceImg.src = `./${computerChoice}.png`;
-    userChoiceImg.src = `./${userChoiceId}.png`;
+    userChoiceImg.src = `./${userChoice}.png`;
+    console.log("computer chice", computerChoice);
+    console.log("user choice", userChoice);
 
-    if (userChoiceId === computerChoice) {
+    if (userChoice === computerChoice) {
         drawGame();
-    } else {
+    }
+
+    else {
         let userWinner = true;
-        if (userChoiceId === "rock") {
+        if (userChoice === "rock") {
             userWinner = computerChoice === "paper" ? false : true;
-        } else if (userChoiceId === "paper") {
+        } else if (userChoice === "paper") {
             userWinner = computerChoice === "scissors" ? false : true;
-        } else if (userChoiceId === "scissors") {
+        } else if (userChoice === "scissors") {
             userWinner = computerChoice === "rock" ? false : true;
         }
 
-        showWinner(userWinner, userChoiceId, computerChoice);
+        showWinner(userWinner, userChoice, computerChoice);
     }
 }
 
-msg.addEventListener("click", () => {
-    Timerwatch()
-    msg.textContent = "You Game Is Start";
 
-
-})
 
 Choices.forEach((choice) => {
     choice.addEventListener("click", function () {
-        let userChoiceId = choice.getAttribute("id");
-        let start = choice.disabled = true;
-        console.log(start);
-        // if (start) {
-        //     alert("Please start the game first!");
-        //     choice.style.cursor = "not-allowed"
-        //     return; // Prevent further execution
+        let userChoice = choice.getAttribute("id");
+
+        console.log(userChoice);
+
+        // let startGame = choice.disabled = true;  // Disable the choice
+        // console.log(startGame);
+        // if (startGame) {
+        //     choice.style.cursor = "not-allowed";
+        //     choice.style.opacity = 0.5;
+        //     choice.style.pointerEvents = "none";
+        //     alert("pls start the game first and enjoy")
         // }
 
-        playGame(userChoiceId);
+
+        playGame(userChoice);
 
     });
 });
@@ -108,43 +112,31 @@ Choices.forEach((choice) => {
 let EndGame = () => {
     clearInterval(Stopwatch);
     alert("Game is OVER")
-    document.querySelector(".rest-btn").style.display = "block";
-    gameInfo.style.display = "none";
+    gameInfo.classList.add("end-game")
+    resestBtn.style.display = "block"
     msg.innerHTML = "Play Now Again";
-    msg.style.backgroundColor = "green";
+    msg.style.color = "green";
 };
 
-resestBtn.addEventListener("click", () => {
+const resestGame = () => {
     UserScorePoint = 0;
     ComputerScorePoint = 0;
     usersScoreEl.textContent = UserScorePoint;
     computersScoreEl.textContent = ComputerScorePoint;
     timeLeft = 60;
     time.textContent = `timer : ${timeLeft} sec`;
-    gameInfo.style.display = "flex";
+    gameInfo.classList.remove("end-game");
     resestBtn.style.display = "none";
-    gameInfo.style.flexDirection = "column";
-    computerChoiceImg.src = `https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid`;
-    userChoiceImg.src = `https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid`;
-    Timerwatch();
-});
+    msg.textContent = "Game has been reset. Make your move!";
+    msg.style.color = "black";
+    computerChoiceImg.src = `https://img.freepik.com/free-vector/robot-skull-mascot-logo_32991-756.jpg?t=st=1738409546~exp=1738413146~hmac=c2e4cc902f446f0a0388fc3dadde3438b0b7f1811cbfc85cb2a1aa9b6b6ff166&w=900`;
+    userChoiceImg.src = `https://www.svgrepo.com/show/192244/man-user.svg`;
 
 
-msg.addEventListener("click", () => {
-    UserScorePoint = 0;
-    ComputerScorePoint = 0;
-    usersScoreEl.textContent = UserScorePoint;
-    computersScoreEl.textContent = ComputerScorePoint;
-    timeLeft = 60;
-    time.textContent = `timer : ${timeLeft} sec`;
-    gameInfo.style.display = "flex";
-    resestBtn.style.display = "none";
-    gameInfo.style.flexDirection = "column";
-    computerChoiceImg.src = `https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid`;
-    userChoiceImg.src = `https://img.freepik.com/free-photo/welcome-phrase-available-launch-open_53876-124476.jpg?semt=ais_hybrid`;
-    // choices.forEach((choice) => {
-    //     choice.style.cursor = "pointer";
-    //     choice.disabled = false;
-    // });
-    Timerwatch();
+}
+
+//play again function
+playAgin.addEventListener("click", () => {
+    resestGame();
+    Timerwatch()
 })

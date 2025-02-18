@@ -4,11 +4,12 @@
 // async function can contain multiple await expressions
 // await only works inside async functions
 
-
 // step 1 : create a function that returns a promise
+
 async function myFunction() {
     return 'Hello';
 }
+
 //is a promise and can be treated as one
 
 myFunction().then(console.log);
@@ -29,22 +30,18 @@ async function myFunction3() {
 myFunction3().then((data) => console.log(data));
 myFunction3().catch((error) => console.log("error", error));
 
-// api use
+// api use...........
 // step 4 : fetch data from api using async function 
 // why use async function to fetch data from api
 // Handle Promises Seamlessly:
-
 // APIs usually return promises (e.g., fetching data with fetch() or axios).
 // async and await make it easier to handle these promises.
 // Readability:
-
 // Code using async/await looks synchronous, even though it’s asynchronous.
 // This improves readability and debugging.
 // Error Handling:
-
 // Use try...catch blocks to handle errors instead of chaining .catch() for promises.
 // Avoid Callback Hell:
-
 // It prevents deeply nested callbacks and improves code structure.
 
 // async function fetchUsers() {
@@ -53,6 +50,7 @@ myFunction3().catch((error) => console.log("error", error));
 //     console.log(data);
 // }
 // fetchUsers();
+
 async function fetchUsers() {
     const res = await fetch('https://jsonplaceholder.typicode.com/users')
     const data = await res.json();
@@ -76,7 +74,7 @@ async function fetcData() {
 }
 fetcData().then(() => console.log("data fetched"));
 
-//  The **try...catch** block is used to handle errors in asynchronous code. It allows you to catch and handle any errors that occur during the execution of the async function.
+//  The **try...catch** block is used to handle errors in asynchronous code. It allows you to catch and handle any errors that occur during the execution of the async function........
 
 function getsongs(song) {
     return new Promise((resolve, reject) => {
@@ -88,7 +86,7 @@ function getsongs(song) {
 getsongs('Tum hi ho').then((data) => console.log(data));
 
 // The **.then()** method is used to handle the resolved value of a promise. It
-// takes a callback function as an argument, which will be executed
+// takes a callback function as an argument, which will be executed. ?
 
 function getsongs2() {
     return new Promise((resolve, reject) => {
@@ -137,6 +135,7 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 
 Promise.race([promise1, promise2, promise3]).then((value) => {
     console.log(value);
+
 })
 
 

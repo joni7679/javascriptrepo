@@ -1,15 +1,25 @@
 
 // basic 
 
-// flasey value list 
-// // false
-// 0 (zero)
-// -0
-// 0n (BigInt zero)
-// "" (empty string)
-// null
-// undefined
-// NaN (Not a Number)
+let a;
+
+function abc() {
+    a = 12;
+    console.log(a)
+}
+abc()
+console.log("variable", a)
+
+
+// flasey value list.......... 
+// // false....
+// 0 (zero)....
+// -0....
+// 0n (BigInt zero)....
+// "" (empty string)...
+// null.............
+// undefined.......
+// NaN (Not a Number)...
 
 let myPromise = new Promise((res, rej) => {
     let success = true;
@@ -19,7 +29,6 @@ let myPromise = new Promise((res, rej) => {
     else {
         rej("Promise rejected");
     }
-
 })
 
 myPromise.then((mes) => {
@@ -30,7 +39,7 @@ myPromise.then((mes) => {
 })
 
 
-// step 2
+// step 2...
 
 const examplePromis = new Promise((res, rej) => {
     setTimeout(() => {
@@ -42,7 +51,6 @@ examplePromis.then((data) => {
     console.log(data);
 }).catch((error) => {
     console.log(error);
-
 })
 
 // step 3
@@ -56,7 +64,6 @@ const examplePromis1 = new Promise((res, rej) => {
     else {
         rej("Random Number is less than 5");
     }
-
 })
 
 examplePromis1.then((data) => {
@@ -66,11 +73,9 @@ examplePromis1.then((data) => {
 })
 
 // api use 
-
 let api = fetch(`https://fakestoreapi.com/users`).then((res) => {
     console.log(res);
     return res.json()
-
 }).then((data) => {
     console.log(data);
 })
@@ -115,8 +120,8 @@ let promiseTask1 = new Promise((res, rej) => {
 
     }).finally((data) => {
         console.log("Finaly this Data Res or Not rej");
-
     })
+
 // example 2
 // Go to the market
 // Buy groceries
@@ -153,9 +158,6 @@ Promise.all([userPost, postsComments, commentsUser]).then(([userPost, postsComme
     console.log("userPost", userPost);
     console.log("postsComments", postsComments);
     console.log("commentsUser", commentsUser);
-
-
-
 }).catch((error) => {
     console.error("Failed to fetch data:", error);
 });
@@ -191,3 +193,36 @@ let fatchProducts = () => {
 
 fatchProducts()
 
+// Promise.allSettled([])	
+// Waits for all promises to settle (either resolve or reject). Returns an array with {status, value} for each.
+let p1 = new Promise((res, rej) => {
+    setTimeout(() => res("p1 resolved"), 1000);
+})
+let p2 = new Promise((res, rej) => {
+    res("promise 2 is res")
+})
+let p3 = new Promise((res, rej) => {
+    rej("reject this promise ")
+})
+Promise.allSettled([p1, p2, p3])
+    .then((results) => console.log(results));
+
+// Promise.any([])
+// Returns the first fulfilled promise (ignores rejections). If all fail, it throws an AggregateError.
+let p4 = new Promise((res, rej) => {
+    setTimeout(() => res("p4 resolved"), 2000);
+})
+let p5 = new Promise((res, rej) => {
+    rej("promise 5 is rej")
+})
+let p6 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res("p6 resolved")
+    }, 300)
+})
+
+Promise.any([p4, p5, p6]).then((result) => {
+    console.log("data res successfully", result)
+}).catch((error) => {
+    console.log("error data rej ", error)
+})
